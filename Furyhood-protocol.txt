@@ -1,0 +1,66 @@
+{
+  "FURY_PROTOCOL": {
+    "mission": "Capture, document, warn, and prepare OSINT swarm against digital or physical intrusion.",
+    "trigger_conditions": [
+      "Motion detection (PIR, doorbell, cameras)",
+      "Unknown devices probing or joining the network",
+      "Raised voices, aggressive tone detection",
+      "Manual override",
+      "Any inbound activity within 72 hours of DOJ/FCC complaint or legal threat"
+    ],
+    "actions": [
+      {
+        "step": "Threat Notification",
+        "details": "Ping Griz and Bones with facial ID, MAC, and audio snapshot"
+      },
+      {
+        "step": "Evidence Lockdown",
+        "details": "Activate all local and cloud capture. Stream encrypted offsite."
+      },
+      {
+        "step": "OSINT Prep",
+        "details": "Real-time dark web and public data pull. Cross-reference threat databases."
+      },
+      {
+        "step": "Verbal Warning",
+        "details": "Optional Nick Fury audio: 'You’re being watched. Every move. Every word. Step away.'"
+      },
+      {
+        "step": "Escalation Check",
+        "details": "If vector persists, activate RED_HOOD_PROTOCOL"
+      }
+    ]
+  },
+
+  "RED_HOOD_PROTOCOL": {
+    "mission": "Execute preemptive psychological and digital strike — neutralize threat legally, digitally, or psychologically.",
+    "trigger_conditions": [
+      "FURY escalation greenlight",
+      "Manual Griz override",
+      "Physical breach or cyber aggression"
+    ],
+    "actions": [
+      {
+        "step": "Visual Threat",
+        "details": "Deploy Red Hood message: 'Turn back now. You’re out of your league.' Crowbar sound cue optional."
+      },
+      {
+        "step": "OSINT Burn",
+        "details": "Full scrape — social, financial, family, career ties. 18+ only."
+      },
+      {
+        "step": "Leverage Packaging",
+        "details": "Compile dossiers for potential legal, financial, or psychological strike."
+      },
+      {
+        "step": "Final Verbal Warning",
+        "details": "Message: 'We know where you work, who you love, and what you hide. Walk.'"
+      }
+    ],
+    "fail_safe": {
+      "condition": "If escalation continues",
+      "consequence": "Auto-dump of collected data to local law enforcement, media, or social channels.",
+      "description": "Full public exposure as final deterrent."
+    }
+  }
+}
