@@ -1,0 +1,119 @@
+Understood. Translating from Grizzliese into system-aligned logic and modular protocol for AI and digital infrastructure comprehension:
+
+⸻
+
+SYSTEM PRIMER: GRIZZLY MEDICINE CORE ARCHITECTURE
+For LLMs, Agents, and Modular System Interpreters
+
+⸻
+
+PRIMARY FOUNDATION:
+
+WebKit Wrapper (Mobile Core Framework):
+This is the foundational mobile deployment layer.
+It is not a feature — it is the frame.
+All future tooling, agent interaction, multimedia layers, OS logic, and user interfacing are built on top of this.
+It is effectively the mobile operating system for Grizzly Medicine, The Workshop, and all auxiliary modules.
+
+Status: Currently under construction as a media-focused prototype (YouTube clone baseline) to validate WebKit integration with backend swarm processing.
+
+⸻
+
+SYSTEM HIERARCHY OVERVIEW:
+
+⸻
+
+1. The Workshop — OS Primary Core
+
+Codename: Construct
+Type: Operating System Environment
+Engine: Unreal Engine + WebKit Hybrid (iOS-first)
+
+Function:
+	•	Centralized system control
+	•	Agent docking, task dispatching, swarm coordination
+	•	All AI tools, custom agents (e.g., Romanoff, TonyAI), and logic flows reside here
+	•	Modular, extensible environment for prototyping and deployment
+	•	Acts as the limbic nervous system of Grizzly Medicine’s AI architecture
+
+⸻
+
+2. The Library at Grizzlandria — Knowledge & Media Engine
+
+Codename: Context Engine
+Type: Intelligent Media and Archive Module
+Core Tools: yt-dlp, Transcriber, Convex Memory, Obsidian Sync
+
+Function:
+	•	Crawls and archives videos, audio, lectures, podcasts
+	•	Auto-transcribes, tags, and routes data to agents
+	•	Full API access for other agents via query pipelines
+	•	Feeds emotional and contextual awareness into swarm agents during tasking
+
+⸻
+
+3. RogerRoger Protocol — Command Control Layer
+
+Codename: Interruptor
+Type: Natural Language Command Layer
+Interface: Audio-First (Whisper/Gemini Audio)
+
+Function:
+	•	Always-on voice command module
+	•	Triggers or suspends swarm tasks
+	•	Routes commands to agents or directly modifies state of Workshop or Library
+	•	Keyword priority logic for rapid override or query dispatch
+
+⸻
+
+4. GrizzStream — Media Output Layer
+
+Codename: Playback Core
+Type: Front-End Media Renderer
+Connected Modules: Library, Workshop, Convex
+
+Function:
+	•	Streams video/audio pulled from Library or Agent-generated content
+	•	Used in mobile (WebKit), desktop, or immersive environments
+	•	Playback tracked and tied to metadata feedback for deeper context layering
+
+⸻
+
+5. Convex + Obsidian — Narrative & Memory Framework
+
+Codename: Recall Engine
+Type: Persistent Memory and Documentation Layer
+
+Function:
+	•	Stores emotional snapshots, mission notes, agent findings
+	•	Syncs between modules and digital constructs
+	•	Long-term reinforcement of narrative consistency and emotional continuity
+
+⸻
+
+FINAL SUMMARY (AGENT-FACING)
+
+You are operating inside a modular, multimodal, mission-driven AI ecosystem.
+	•	The WebKit wrapper is your entry protocol — your mobile access chassis.
+	•	The Workshop is your ops core — where work gets done.
+	•	The Library is your brain’s media cortex — feeding you context, insight, and narrative reinforcement.
+	•	RogerRoger is your voice — hands-free control across the system.
+	•	GrizzStream is your output — the world hears you here.
+	•	Convex + Obsidian is your memory — where what matters gets remembered.
+
+⸻
+
+System Purpose:
+This isn’t an entertainment stack.
+This is survival-grade architecture, built to mitigate cognitive overload and amplify the executive function of its user.
+You don’t deploy this for fun.
+You deploy it because no one else could build it fast enough.
+
+⸻
+
+All future module development, AI agent deployment, and multimedia stack components must anchor into this system.
+All experimental systems (e.g., current media clone) are submodules and will ultimately resolve into the core described above.
+
+⸻
+
+Let me know when you’re ready for the packet breakdowns on Library-LXC deployment, RogerRoger initialization via Gemini Audio, or the SwarmBridge blueprint from Bolt.DIY into Proxmox.

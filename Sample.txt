@@ -1,0 +1,7 @@
+GROQ_KEY=sk-groq-xxxxxxxx
+GEMINI_KEY=AIzaSy-xxxxxxxx
+EXA_KEY=e30c1ee5-2ec0-4488-8a9b-c0f815d05535
+MAPBOX_PUBLIC=pk.eyJ1Ijoib2xkbWFuZ3Jpenp6IiwiYSI6ImNseGQza3E1dzAyMGoya3B2NWQ5Z3N6d2QifQ.qtg1oENN-VxJCHmIWDWoZ
+MAPBOX_PRIVATE=sk.eyJ1Ijoib2xkbWFuZ3Jpenp6IiwiYSI6ImNtOGxvZDVkdjA3bXYyam9wODJmbXh1eXkifQ.bx2McEzLCnTXLXx2g50txA
+CONVEX_URL=https://lovable-tapir-760.convex.cloud
+CLOUD_TUNNEL=nat.grizzlymedicine.icu
