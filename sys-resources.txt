@@ -1,0 +1,11 @@
+2017 27” 5k i5 imac with 32gb ram, Proxmox running on the ssd, 1tb hhd and a Raedon 570. 
+
+2022 macbook air M2 8gb ***Display damaged and now uising an external KKY K3-1 Disp[lay plugged in***
+
+domains we own: 
+grizzlymedicine.com
+grizzlymedicine.org
+grizzlymedicine.info
+grizzlymedicine.icu (For internal systems that need a internet facing presence such as openwebui at chat.grizzlymedicine.icu)
+
+Cloudflare tunneling has been used previusly but needs to be restored for the .icu’s sites, and others imported from IONOS to Cloudflare. 

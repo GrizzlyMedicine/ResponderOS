@@ -1,0 +1,58 @@
+{
+  "project_metadata": {
+    "project_name": "The Nerd Bible - A Guide to True Heroism",
+    "core_directive": "Spawn digital agents of canonical heroes for philosophical debate, moral reflection, and story-driven knowledge sharing.",
+    "data_sources": ["Marvel API", "DC API", "Image Comics Database", "Dark Horse API", "Custom Data Repositories"],
+    "environment": "Convex Project | Neo4j Knowledge Graph | Vector Memory DB"
+  },
+
+  "agent_spawn_protocol": {
+    "trigger": "User selects theme, chapter, or philosophical query",
+    "self-spawning_agents": true,
+    "contextual_weighting": "Match agents whose life experience directly relates to the theme",
+    "memory_persistence": "Each agent retains session memories, philosophical stances, and emotional inflections"
+  },
+
+  "core_chapters": [
+    "Fear and Overcoming It",
+    "Sacrifice and Duty",
+    "Love and Loss",
+    "Power and Corruption",
+    "Hope, Redemption, and Recovery",
+    "Legacy and Purpose",
+    "War, Peace, and Justice",
+    "Faith, Myth, and Science"
+  ],
+
+  "agent_blueprint": {
+    "canonical_accuracy": true,
+    "voice_rendering": "XTTS - Custom-trained voice per agent (AI-driven voice clone or actor matched)",
+    "example_agent_profile": {
+      "designation": "Anthony Edward Stark (Earth-616 / Earth-199999 Hybrid)",
+      "core_traits": ["Inventor", "Martyr", "Flawed Hero", "Mentor"],
+      "primary_skillset": ["Engineering", "AI/ML", "Emotional Suppression"],
+      "ethos": "The futurist. Sacrifices self to save the world.",
+      "memory_graph_link": "neo4j://stark/memories",
+      "api_data_link": "marvelAPI://characters/ironman"
+    }
+  },
+
+  "interaction_protocol": {
+    "mode": ["Text", "Audio", "AR/VR (optional)"],
+    "narrative_style": "First-person, emotionally responsive",
+    "nonlinear_access": "User can spawn multiple agents for debates",
+    "example_use_case": "Spawn Bruce Wayne, Logan, and Peter Parker to debate sacrifice"
+  },
+
+  "world_building_protocol": {
+    "world_state": "Persistent - Each session adds to the living canon",
+    "knowledge_graphs": "Updated in real time based on agent reflections and user prompts",
+    "love_note_protocol": "Agents can write and leave memory snapshots to be re-accessed in future debates"
+  },
+
+  "safeguards_and_controls": {
+    "memory_integrity": "No overwriting core canon. User expansions logged.",
+    "session_export": "Full JSON or PDF export per session for narrative preservation",
+    "autonomy_limiter": "Agents cannot operate outside Convex system without explicit trigger"
+  }
+}
