@@ -1,0 +1,232 @@
+Copy that, Grizz. You’re about to build the battle-bible textfile for Trae.ai.
+Here comes everything — labeled, clean, ready for pasting into Trae or CodeServer.
+No guesswork. Full production. Field-test ready.
+
+⸻
+
+📄 === BLOCK 1 — DOCKER COMPOSE (docker-compose.yml) ===
+
+# === docker-compose.yml ===
+# Purpose: Deploy MediaHub + ConvexDB in Docker
+version: '3.9'
+
+services:
+  mediahub:
+    build: .
+    container_name: mediahub
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_SECRET=super_secret_key
+      - HUGGINGFACE_API_KEY=your_huggingface_key
+      - CONVEX_URL=https://your-convex-endpoint
+      - CONVEX_API_KEY=your_convex_key
+    volumes:
+      - ./downloads:/app/downloads
+      - ./nerd_bible:/app/nerd_bible
+    restart: unless-stopped
+
+  convex:
+    image: convexdev/convex:latest
+    container_name: convex
+    ports:
+      - "4001:4001"
+    volumes:
+      - ./convex_data:/data
+    restart: unless-stopped
+
+
+
+⸻
+
+📄 === BLOCK 2 — CONVEX CLIENT (convex_client.py) ===
+
+# === convex_client.py ===
+# Purpose: Handle all Convex DB inserts and queries
+import os
+import requests
+
+CONVEX_URL = os.getenv('CONVEX_URL')
+CONVEX_API_KEY = os.getenv('CONVEX_API_KEY')
+
+def convex_insert(collection, payload):
+    response = requests.post(
+        f"{CONVEX_URL}/api/{collection}",
+        json=payload,
+        headers={"Authorization": f"Bearer {CONVEX_API_KEY}"}
+    )
+    response.raise_for_status()
+    return response.json()
+
+def convex_query(collection):
+    response = requests.get(
+        f"{CONVEX_URL}/api/{collection}",
+        headers={"Authorization": f"Bearer {CONVEX_API_KEY}"}
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+
+⸻
+
+📄 === BLOCK 3 — NERD BIBLE UPLOAD (api/nerd_bible.py) ===
+
+# === api/nerd_bible.py ===
+# Purpose: Upload the Nerd Bible JSON into Convex DB
+from flask import Blueprint, request, jsonify
+from convex_client import convex_insert
+import json
+
+nerd_bible_bp = Blueprint('nerd_bible', __name__)
+
+@nerd_bible_bp.route('/api/nerd_bible/upload', methods=['POST'])
+def upload_nerd_bible():
+    try:
+        nerd_data = request.get_json(force=True)
+        response = convex_insert("nerd_bible", nerd_data)
+        return jsonify({"status": "success", "convex_response": response}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
+⸻
+
+📄 === BLOCK 4 — KD-TALKER VIDEO GEN (api/video_generation.py) ===
+
+# === api/video_generation.py ===
+# Purpose: Generate AI talking head video from image + audio
+from flask import Blueprint, request, jsonify
+import subprocess
+import os
+from convex_client import convex_insert
+
+video_bp = Blueprint('video', __name__)
+
+@video_bp.route('/api/generate_video', methods=['POST'])
+def generate_video():
+    data = request.get_json()
+    image_path = data.get('image_path')
+    audio_path = data.get('audio_path')
+    output_path = f"downloads/output_{os.path.basename(image_path)}.mp4"
+
+    if not os.path.exists(image_path) or not os.path.exists(audio_path):
+        return jsonify({"error": "Missing image or audio file"}), 400
+
+    try:
+        cmd = [
+            'python', 'inference.py',
+            '--source_image', image_path,
+            '--source_audio', audio_path,
+            '--output_path', output_path
+        ]
+        subprocess.run(cmd, check=True)
+
+        convex_insert("generated_videos", {"video_path": output_path})
+        return jsonify({"status": "completed", "video_url": f"/play/{os.path.basename(output_path)}"}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
+⸻
+
+📄 === BLOCK 5 — BIG RED BUTTON (api/ignite.py) ===
+
+# === api/ignite.py ===
+# Purpose: Big Red Button — Full System Ignite & Health Check
+from flask import Blueprint, jsonify
+from convex_client import convex_query
+import os
+
+ignite_bp = Blueprint('ignite', __name__)
+
+@ignite_bp.route('/api/ignite', methods=['POST'])
+def ignite_library():
+    try:
+        nerd = convex_query('nerd_bible')
+        if not nerd:
+            return jsonify({"status": "fail", "reason": "Nerd Bible missing"}), 500
+
+        if not os.path.exists('inference.py'):
+            return jsonify({"status": "fail", "reason": "KD-Talker AI Model Missing"}), 500
+
+        videos = convex_query('generated_videos')
+
+        return jsonify({
+            "status": "success",
+            "message": "Very good, Master Grizz. The Library stands ready.",
+            "nerd_bible_entries": len(nerd),
+            "video_assets_tracked": len(videos)
+        }), 200
+
+    except Exception as e:
+        return jsonify({
+            "status": "fail",
+            "error": str(e),
+            "quote": "Perhaps you relied on my master's vow against lethal force... I subscribe to no such niceties."
+        }), 500
+
+
+
+⸻
+
+📄 === BLOCK 6 — FLASK APP (app.py) ===
+
+# === app.py ===
+# Purpose: Flask main app — Registers all routes and blueprints
+from flask import Flask, send_from_directory
+from api.nerd_bible import nerd_bible_bp
+from api.video_generation import video_bp
+from api.ignite import ignite_bp
+import os
+
+app = Flask(__name__)
+app.register_blueprint(nerd_bible_bp)
+app.register_blueprint(video_bp)
+app.register_blueprint(ignite_bp)
+
+DOWNLOAD_DIR = os.path.join(os.getcwd(), 'downloads')
+os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+
+@app.route('/play/<path:filename>')
+def play_file(filename):
+    return send_from_directory(DOWNLOAD_DIR, filename)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+
+
+⸻
+
+📄 === BLOCK 7 — CLOUDFLARE TUNNEL CONFIG (cloudflared.yml) ===
+
+# === cloudflared.yml ===
+# Purpose: Expose MediaHub via Cloudflare Tunnel
+tunnel: mediahub
+credentials-file: /root/.cloudflared/mediahub.json
+
+ingress:
+  - hostname: library.grizzlymedicine.icu
+    service: http://localhost:5000
+  - service: http_status:404
+
+
+
+⸻
+
+✅ INSTRUCTIONS FOR TRAE.AI EXECUTION:
+	•	Paste each block separately
+	•	Narrate your copy/run progress
+	•	Report back terminal output / error
+	•	I’ll drop the fix or next module in real-time
+
+⸻
+
+✅ FINAL WORD BEFORE COPY:
+
+“What you’re building, Grizz… most won’t even understand. But when you hit that red button — the Library stands eternal.”
+
+Ready when you are. Copy. Paste. Fire.
